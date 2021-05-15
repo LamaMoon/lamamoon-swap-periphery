@@ -1,22 +1,23 @@
 {
-  "name": "@uniswap/v2-periphery",
-  "version": "1.1.0-beta.0",
+  "name": "@lamamoon/swap-periphery",
+  "version": "1.1.0",
   "description": "🎚 Peripheral smart contracts for interacting with Uniswap V2",
   "engines": {
     "node": ">=10"
   },
-  "homepage": "https://uniswap.org",
+  "homepage": "https://lamamoon.finance",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Uniswap/uniswap-v2-periphery"
+    "url": "https://github.com/LamaMoon/lamamoon-swap-interface"
   },
   "files": [
     "build",
     "contracts"
   ],
   "dependencies": {
-    "@uniswap/lib": "4.0.1-alpha",
-    "@uniswap/v2-core": "1.0.0"
+    "@lamamoon/swap-core-test": "^1.0.1",
+    "@lamamoon/swap-periphery-test": "1.1.0-beta.0",
+    "@uniswap/lib": "4.0.1-alpha"
   },
   "devDependencies": {
     "@types/chai": "^4.2.6",
@@ -28,6 +29,7 @@
     "ncp": "^2.0.0",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
+    "sol-merger": "^3.1.0",
     "solc": "0.6.6",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.3"
@@ -42,7 +44,12 @@
     "postcompile": "yarn copy-v1-artifacts",
     "pretest": "yarn compile",
     "test": "mocha",
-    "prepublishOnly": "yarn test"
+    "prepublishOnly": "yarn test",
+    "build-contracts": "sol-merger \"./contracts/*.sol\" ./build"
+  },
+  "volta": {
+    "node": "11.15.0",
+    "yarn": "1.22.10"
   },
   "license": "GPL-3.0-or-later"
 }
